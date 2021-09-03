@@ -2,8 +2,8 @@
 
 pragma solidity 0.6.12;
 
-import "@openzeppelin/contracts/math/SafeMath.sol";
-import "@openzeppelin/contracts/token/ERC20/SafeERC20.sol";
+import 'OpenZeppelin/openzeppelin-contracts@3.4.0/contracts/math/SafeMath.sol';
+import 'OpenZeppelin/openzeppelin-contracts@3.4.0/contracts/token/ERC20/SafeERC20.sol';
 import "./LPToken.sol";
 import "./MathUtils.sol";
 
@@ -661,12 +661,14 @@ library SwapUtils {
         uint256 totalSupply = self.lpToken.totalSupply();
         require(amount <= totalSupply, "Cannot exceed total supply");
 
-        uint256 feeAdjustedAmount =
-            amount
-                .mul(
-                FEE_DENOMINATOR.sub(calculateCurrentWithdrawFee(self, account))
-            )
-                .div(FEE_DENOMINATOR);
+        uint256 feeAdjustedAmount = amount;
+
+            // No fees for withdrawals!
+            // amount
+            //     .mul(
+            //     FEE_DENOMINATOR.sub(calculateCurrentWithdrawFee(self, account))
+            // )
+            //     .div(FEE_DENOMINATOR);
 
         uint256[] memory amounts = new uint256[](self.pooledTokens.length);
 

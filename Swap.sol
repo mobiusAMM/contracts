@@ -2,9 +2,9 @@
 
 pragma solidity 0.6.12;
 
-import "@openzeppelin/contracts/math/SafeMath.sol";
-import "@openzeppelin/contracts/token/ERC20/SafeERC20.sol";
-import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
+import 'OpenZeppelin/openzeppelin-contracts@3.4.0/contracts/math/SafeMath.sol';
+import 'OpenZeppelin/openzeppelin-contracts@3.4.0/contracts/token/ERC20/SafeERC20.sol';
+import 'OpenZeppelin/openzeppelin-contracts@3.4.0/contracts/utils/ReentrancyGuard.sol';
 import "./OwnerPausable.sol";
 import "./SwapUtils.sol";
 import "./MathUtils.sol";
@@ -265,6 +265,30 @@ contract Swap is OwnerPausable, ReentrancyGuard {
         require(index < swapStorage.pooledTokens.length, "Index out of range");
         return swapStorage.balances[index];
     }
+
+    /**
+     * @notice Return balances of pooled tokens
+     * @return current balances of all tokens in pool
+     */
+    function getBalances() external view returns (uint256[] memory) {
+        return swapStorage.balances;
+    }
+
+    /**
+        @notice Returns the swap fee
+        @return current swap fee
+     */
+     function getSwapFee() external view returns (uint256) {
+         return swapStorage.swapFee;
+     }
+
+    /**
+        @notice Returns address of lp token
+        @return address of lp token
+     */
+     function getLpToken() external view returns (address) {
+         return address(swapStorage.lpToken);
+     }
 
     /**
      * @notice Get the virtual price, to help calculate profit

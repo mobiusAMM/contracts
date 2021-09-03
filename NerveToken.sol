@@ -2,10 +2,11 @@
 
 pragma solidity 0.6.12;
 
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "@openzeppelin/contracts/token/ERC20/ERC20Burnable.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/access/AccessControl.sol";
+import 'OpenZeppelin/openzeppelin-contracts@3.4.0/contracts/token/ERC20/ERC20.sol';
+import 'OpenZeppelin/openzeppelin-contracts@3.4.0/contracts/token/ERC20/ERC20Burnable.sol';
+import 'OpenZeppelin/openzeppelin-contracts@3.4.0/contracts/access/Ownable.sol';
+import 'OpenZeppelin/openzeppelin-contracts@3.4.0/contracts/access/AccessControl.sol';
+
 
 // NerveToken with Governance.
 contract NerveToken is ERC20, ERC20Burnable, Ownable, AccessControl {
